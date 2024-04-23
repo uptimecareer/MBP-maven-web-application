@@ -5,11 +5,11 @@ def mavenHome = tool name: 'maven-3.9.6'
     echo "The Build numebr is: ${env.BUILD_NUMBER}"
     echo "The node name is: ${env.NODE_NAME}"
 
-stage('CheckoutCode'){
+stage('CheckoutSourceCode'){
 git branch: 'development', changelog: false, credentialsId: '0f3d9fac-a704-4411-8b4a-d533f774307f', poll: false, url: 'https://github.com/uptimecareer/MBP-maven-web-application.git'
 }
 
-stage('BuildArtifact'){
+stage('MavenBuildArtifact'){
  sh "${mavenHome}/bin/mvn clean package"
 }
 
